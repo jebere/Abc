@@ -15,7 +15,7 @@ namespace Soft.Areas.Quantity.Pages.Measures
         {
             if (id == null) return NotFound();
 
-            Item = MeasureViewFactory.Create(await data.Get(id));
+            Item = MeasureViewFactory.Create(await db.Get(id));
 
             if (Item == null) { return NotFound(); }
             return Page();
@@ -25,7 +25,7 @@ namespace Soft.Areas.Quantity.Pages.Measures
         {
             if (id == null) return NotFound();
 
-            await data.Delete(id);
+            await db.Delete(id);
 
             return RedirectToPage("./Index");
         }

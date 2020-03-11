@@ -19,10 +19,9 @@ namespace Soft.Areas.Quantity.Pages.Measures
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid) return Page();
-            await data.Add(MeasureViewFactory.Create(Item));
+            await db.Add(MeasureViewFactory.Create(Item));
 
             return RedirectToPage("./Index");
         }
     }
 }
-

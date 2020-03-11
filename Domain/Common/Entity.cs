@@ -1,6 +1,6 @@
 ﻿using Abc.Data.Common;
 
-namespace Abc.Domain
+namespace Abc.Domain.Common
 {
     public abstract class Entity<T> where T: PeriodData
     {

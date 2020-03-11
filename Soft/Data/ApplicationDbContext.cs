@@ -6,7 +6,6 @@ namespace Soft.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -18,3 +17,4 @@ namespace Soft.Data
         }
     }
 }
+

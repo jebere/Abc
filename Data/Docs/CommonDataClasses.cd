@@ -1,45 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Abc.Data.Common.DefinedEntityData">
-    <Position X="0.75" Y="2.75" Width="2.25" />
+    <Position X="0.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\DefinedEntityData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Abc.Data.Common.NamedEntityData">
-    <Position X="4.25" Y="2.75" Width="1.75" />
+    <Position X="4" Y="2.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\NamedEntityData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Abc.Data.Common.UniqueEntityData">
-    <Position X="4.25" Y="1" Width="1.5" />
+    <Position X="6.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\UniqueEntityData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Abc.Data.Common.PeriodData">
-    <Position X="0.75" Y="1" Width="2.25" />
+    <Position X="9.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAAAAAA=</HashCode>
       <FileName>Common\PeriodData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Abc.Data.Money.CurrencyData" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="0.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Money\CurrencyData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Abc.Data.Quantity.MeasureData" Collapsed="true">
-    <Position X="2.5" Y="4.75" Width="1.5" />
+    <Position X="3.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Quantity\MeasureData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Data.Quantity.SystemOfUnitsData" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Quantity\SystemOfUnitsData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Abc.Data.Quantity.UnitData" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Quantity\UnitData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

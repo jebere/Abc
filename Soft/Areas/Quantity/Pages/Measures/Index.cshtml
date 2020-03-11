@@ -10,29 +10,47 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.SearchString" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Item.Name)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Items[0].Name)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item.Code)
+                @Html.DisplayNameFor(model => model.Items[0].Code)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item.Definition)
+                @Html.DisplayNameFor(model => model.Items[0].Definition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item.ValidFrom)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Items[0].ValidFrom)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item.ValidTo)
+                @Html.DisplayNameFor(model => model.Items[0].ValidTo)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.Items)
+        @foreach (var item in Model.Items)
         {
             <tr>
                 <td>
@@ -59,3 +77,23 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>
