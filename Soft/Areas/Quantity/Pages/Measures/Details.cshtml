@@ -3,23 +3,13 @@
 @model Soft.Areas.Quantity.Pages.Measures.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Item</h4>
-    <hr />
-    <dl class="row">
-        @Html.DisplayControlsFor(model => model.Item.Code)
-        @Html.DisplayControlsFor(model => model.Item.Name)
-        @Html.DisplayControlsFor(model => model.Item.Definition)
-        @Html.DisplayControlsFor(model => model.Item.ValidFrom)
-        @Html.DisplayControlsFor(model => model.Item.ValidTo)
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Item.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+<body>
+@Html.DisplayControlsFor(model => model.Item.Code)
+@Html.DisplayControlsFor(model => model.Item.Name)
+@Html.DisplayControlsFor(model => model.Item.Definition)
+@Html.DisplayControlsFor(model => model.Item.ValidFrom)
+@Html.DisplayControlsFor(model => model.Item.ValidTo)
+</body>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abc.Domain.Quantity;
 using Abc.Pages.Quantity;
@@ -9,18 +8,19 @@ namespace Soft.Areas.Quantity.Pages.Measures
 {
     public class IndexModel : MeasuresPage
     {
-     
-
-        public IndexModel(IMeasuresRepository r) : base(r)
-        {
-        }
+        public IndexModel(IMeasuresRepository r) : base(r) { }
 
         public async Task OnGetAsync(string sortOrder,
             string currentFilter, string searchString, int? pageIndex)
         {
+            sortOrder = string.IsNullOrEmpty(sortOrder) ? "Name" : sortOrder;
             CurrentSort = sortOrder;
-            NameSort = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            NameSort = sortOrder == "Name" ? "Name_desc" : "Name";
+            IdSort = sortOrder == "Id" ? "Id_desc" : "Id";
+            CodeSort = sortOrder == "Code" ? "Code_desc" : "Code";
+            DefinitionSort = sortOrder == "Definition" ? "Definition_desc" : "Definition";
+            ValidFromSort = sortOrder == "ValidFrom" ? "ValidFrom_desc" : "ValidFrom";
+            ValidToSort = sortOrder == "ValidTo" ? "ValidTo_desc" : "ValidTo";
 
             if (searchString != null)
             {
@@ -37,7 +37,6 @@ namespace Soft.Areas.Quantity.Pages.Measures
             SearchString = CurrentFilter;
             db.SearchString = SearchString;
             db.PageIndex = pageIndex ?? 1;
-            
             PageIndex = db.PageIndex;
             var l = await db.Get();
             Items = new List<MeasureView>();
@@ -45,9 +44,14 @@ namespace Soft.Areas.Quantity.Pages.Measures
             HasNextPage = db.HasNextPage;
             HasPreviousPage = db.HasPreviousPage;
         }
+
         public string CurrentSort { get; set; }
-        public string DateSort { get; set; }
+        public string ValidFromSort { get; set; }
+        public string ValidToSort { get; set; }
         public string NameSort { get; set; }
+        public string CodeSort { get; set; }
+        public string IdSort { get; set; }
+        public string DefinitionSort { get; set; }
 
         public bool HasPreviousPage { get; set; }
         public bool HasNextPage { get; set; }

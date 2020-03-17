@@ -1,99 +1,44 @@
 ﻿@page
+@using Abc.Pages.Extentions
 @model Soft.Areas.Quantity.Pages.Measures.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    Layout = "_Index";
+    var page = "/Quantity/Measures";
+}
+@section Create
+{
+    @Html.HypertextLinkFor(string.Empty, new Link(Constants.CreateNewLinkTitle, $"{page}/Create"))
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-
-<form asp-page="./Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Find by name:
-            <input type="text" name="SearchString" value="@Model.SearchString" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
-        </p>
-    </div>
-</form>
-
+<body>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                   asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.Items[0].Name)
-                </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Definition)
-            </th>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
-                   asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.Items[0].ValidFrom)
-                </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].ValidTo)
-            </th>
-            <th></th>
-        </tr>
+    @Html.TableHeaderFor(
+        new Link(Html.DisplayNameFor(model => model.Item.Id), $"{page}?sortOrder={Model.IdSort}"),
+        new Link(Html.DisplayNameFor(model => model.Item.Name), $"{page}?sortOrder={Model.NameSort}"),
+        new Link(Html.DisplayNameFor(model => model.Item.Code), $"{page}?sortOrder={Model.CodeSort}"),
+        new Link(Html.DisplayNameFor(model => model.Item.Definition), $"{page}?sortOrder={Model.DefinitionSort}"),
+        new Link(Html.DisplayNameFor(model => model.Item.ValidFrom), $"{page}?sortOrder={Model.ValidFromSort}"),
+        new Link(Html.DisplayNameFor(model => model.Item.ValidTo), $"{page}?sortOrder={Model.ValidToSort}")
+        )
     </thead>
     <tbody>
-        @foreach (var item in Model.Items)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Definition)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ValidFrom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ValidTo)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            @Html.TableRowFor(
+                page,
+                item.Id,
+                Html.DisplayFor(modelItem => item.Id),
+                Html.DisplayFor(modelItem => item.Name),
+                Html.DisplayFor(modelItem => item.Code),
+                Html.DisplayFor(modelItem => item.Definition),
+                Html.DisplayFor(modelItem => item.ValidFrom),
+                Html.DisplayFor(modelItem => item.ValidTo)
+                )
+        </tr>
+    }
     </tbody>
 </table>
-
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.PageIndex - 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @prevDisabled">
-    Previous
-</a>
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.PageIndex + 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @nextDisabled">
-    Next
-</a>
+</body>

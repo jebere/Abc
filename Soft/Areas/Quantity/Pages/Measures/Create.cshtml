@@ -3,34 +3,14 @@
 @model Soft.Areas.Quantity.Pages.Measures.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    Layout = "_Create";
 }
 
-<h1>Create</h1>
-
-<h4>Item</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @Html.EditControlsFor(model => model.Item.Id)
-            @Html.EditControlsFor(model => model.Item.Code)
-            @Html.EditControlsFor(model => model.Item.Name)
-            @Html.EditControlsFor(model => model.Item.Definition)
-            @Html.EditControlsFor(model => model.Item.ValidFrom)
-            @Html.EditControlsFor(model => model.Item.ValidTo)
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<body>
+@Html.EditControlsFor(model => model.Item.Id)
+@Html.EditControlsFor(model => model.Item.Code)
+@Html.EditControlsFor(model => model.Item.Name)
+@Html.EditControlsFor(model => model.Item.Definition)
+@Html.EditControlsFor(model => model.Item.ValidFrom)
+@Html.EditControlsFor(model => model.Item.ValidTo)
+</body>

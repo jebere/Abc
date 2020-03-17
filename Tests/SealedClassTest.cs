@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Tests;
 
-namespace Tests
+namespace Abc.Tests
 {
     public abstract class SealedClassTest<TClass, TBaseClass>: ClassTest<TClass, TBaseClass> where TClass: new()
 

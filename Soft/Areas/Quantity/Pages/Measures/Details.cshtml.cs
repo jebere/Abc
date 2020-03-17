@@ -26,3 +26,4 @@ namespace Soft.Areas.Quantity.Pages.Measures
     }
 
 }
+
