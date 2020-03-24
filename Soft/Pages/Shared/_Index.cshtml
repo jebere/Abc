@@ -1,11 +1,12 @@
-﻿
-@{
+﻿@{ 
     Layout = "_Layout";
     ViewData["Title"] = Model.PageTitle;
 }
 
+
 <p>
     <h1>@ViewData["Title"]</h1>
+    <h4>@Model.PageSubTitle</h4>
     @RenderSection("Create")
 </p>
 
@@ -35,36 +36,36 @@
 <div class="form-inline">
 
     <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="1"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @prevDisabled">
+       asp-route-currentFilter="@Model.SearchString"
+       class="btn btn-light @prevDisabled">
         First
     </a>
     &nbsp;
     <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="@(Model.PageIndex - 1)"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @prevDisabled">
+       asp-route-currentFilter="@Model.SearchString"
+       class="btn btn-light @prevDisabled">
         Previous
     </a>
     &nbsp;
     Page @Model.PageIndex of @Model.TotalPages
     &nbsp;
     <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="@(Model.PageIndex + 1)"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @nextDisabled">
+       asp-route-currentFilter="@Model.SearchString"
+       class="btn btn-light @nextDisabled">
         Next
     </a>
     &nbsp;
     <a asp-page="./Index"
-       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="@(Model.TotalPages)"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @nextDisabled">
+       asp-route-currentFilter="@Model.SearchString"
+       class="btn btn-light @nextDisabled">
         Last
     </a>
 

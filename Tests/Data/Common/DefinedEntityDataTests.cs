@@ -1,13 +1,10 @@
-using System;
 using Abc.Data.Common;
-using Abc.Tests;
-using Microsoft.VisualBasic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Common
+namespace Abc.Tests.Data.Common
 {
     [TestClass]
-    public class DefinedEntityDataTests : AbstractClassTest<DefinedEntityData, NamedEntityData>
+    public class DefinedEntityDataTests : AbstractClassTests<DefinedEntityData, NamedEntityData>
     {
         private class testClass : DefinedEntityData { }
 
@@ -23,7 +20,5 @@ namespace Tests.Data.Common
         {
             isNullableProperty(() => obj.Definition, x => obj.Definition = x);
         }
-
-       
     }
 }

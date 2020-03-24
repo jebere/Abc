@@ -1,12 +1,11 @@
 ﻿using Abc.Data.Common;
 using Abc.Data.Quantity;
-using Abc.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Quantity
+namespace Abc.Tests.Data.Quantity
 {
     [TestClass]
-    public class UnitDataTests : SealedClassTest<UnitData, DefinedEntityData>
+    public class UnitDataTests : SealedClassTests<UnitData, DefinedEntityData>
     {
         [TestMethod]
         public void MeasureIdTest()

@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Abc.Infra
 {
-    public abstract class FilteredRepository<TDomain, TData> : SortedRepository<TDomain, TData>, ISearching
+    public abstract class FilteredRepository<TDomain, TData> : SortedRepository<TDomain, TData>, IFiltering
         where TData : PeriodData, new()
         where TDomain : Entity<TData>, new()
     {
         public string SearchString { get; set; }
+        public string FixedFilter { get; set; }
+        public string FixedValue { get; set; }
 
         protected FilteredRepository(DbContext c, DbSet<TData> s) : base(c, s)
         {
@@ -21,7 +23,31 @@ namespace Abc.Infra
         {
             var query = base.createSqlQuery();
             query = addFiltering(query);
+            query = addFixedFiltering(query);
             return query;
+        }
+        private IQueryable<TData> addFixedFiltering(IQueryable<TData> query)
+        {
+            var expression = createFixedWhereExpression();
+            return expression is null ? query : query.Where(expression);
+        }
+        private Expression<Func<TData, bool>> createFixedWhereExpression()
+        {
+            if (FixedFilter is null) return null;
+            if (FixedValue is null) return null;
+            var param = Expression.Parameter(typeof(TData), "s");
+
+            var p = typeof(TData).GetProperty(FixedFilter);
+
+            if (p is null) return null;
+            Expression body = Expression.Property(param, p); 
+            if (p.PropertyType != typeof(string))
+                body = Expression.Call(body, "ToString", null);
+            body = Expression.Call(body, "Contains", null, Expression.Constant(FixedValue));
+            var predicate = body;
+
+            return Expression.Lambda<Func<TData, bool>>(predicate, param);
+
         }
         protected internal IQueryable<TData> addFiltering(IQueryable<TData> query)
         {

@@ -1,11 +1,10 @@
 using Abc.Data.Common;
-using Abc.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Common
+namespace Abc.Tests.Data.Common
 {
     [TestClass]
-    public class UniqueEntityDataTests : AbstractClassTest<UniqueEntityData, PeriodData>
+    public class UniqueEntityViewTests : AbstractClassTests<UniqueEntityData, PeriodData>
     {
         private class testClass : UniqueEntityData { }
 

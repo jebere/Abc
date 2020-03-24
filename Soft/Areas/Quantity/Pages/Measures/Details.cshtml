@@ -1,9 +1,13 @@
 ﻿@page
+@using Abc.Aids
+@using Abc.Data.Quantity
 @using Abc.Pages.Extentions
 @model Soft.Areas.Quantity.Pages.Measures.DetailsModel
 
 @{
     Layout = "_Details";
+    const string units = "/Quantity/Units";
+    var measureId = GetMember.Name<UnitData>(x => x.MeasureId);
 }
 
 <body>
@@ -13,3 +17,8 @@
 @Html.DisplayControlsFor(model => model.Item.ValidFrom)
 @Html.DisplayControlsFor(model => model.Item.ValidTo)
 </body>
+
+@section Details {
+    @Html.HypertextLinkFor(string.Empty, new Link("Show units",
+        $"{units}/Index?fixedFilter={measureId}&fixedValue={Model.Item.Id}"))
+}

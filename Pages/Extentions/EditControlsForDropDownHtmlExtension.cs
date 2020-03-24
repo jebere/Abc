@@ -10,7 +10,8 @@ namespace Abc.Pages.Extentions
     {
         public static IHtmlContent EditControlsForDropDown<TModel, TResult>(
             this IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression,
-            IEnumerable<SelectListItem> items) {
+            IEnumerable<SelectListItem> items)
+        {
 
             var htmlStrings = new List<object> {
                 new HtmlString("<div class=\"form-group\">"),

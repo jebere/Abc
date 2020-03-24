@@ -1,12 +1,11 @@
 using Abc.Data.Common;
 using Abc.Data.Quantity;
-using Abc.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Quantity
+namespace Abc.Tests.Data.Quantity
 {
     [TestClass]
-    public class UnitFactorDataTests : SealedClassTest<UnitFactorData, PeriodData>
+    public class UnitFactorDataTests : SealedClassTests<UnitFactorData, PeriodData>
     {
         [TestMethod]
         public void FactorTest()

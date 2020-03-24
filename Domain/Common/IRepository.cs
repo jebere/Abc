@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Abc.Domain.Common
 {
-    public interface IRepository<T>: ICrudMethods<T>, IPaging, ISearching, ISorting
+    public interface IRepository<T>: ICrudMethods<T>, IPaging, IFiltering, ISorting
     {
         
        

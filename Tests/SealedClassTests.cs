@@ -1,9 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Tests;
 
 namespace Abc.Tests
 {
-    public abstract class SealedClassTest<TClass, TBaseClass>: ClassTest<TClass, TBaseClass> where TClass: new()
+    public abstract class SealedClassTests<TClass, TBaseClass>: ClassTests<TClass, TBaseClass> where TClass: new()
 
     {
         [TestMethod]

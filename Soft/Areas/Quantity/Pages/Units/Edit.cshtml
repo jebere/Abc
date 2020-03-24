@@ -1,0 +1,18 @@
+﻿@page
+@using Abc.Pages.Extentions
+@model Abc.Soft.Areas.Quantity.Pages.Units.EditModel
+
+@{
+    Layout = "_Edit";
+}
+
+    <body>
+        <input type="hidden" asp-for="Item.Id" />
+    @Html.EditControlsForDropDown(model => model.Item.MeasureId, Model.Measures)
+        @Html.EditControlsFor(m => m.Item.Code)
+        @Html.EditControlsFor(m => m.Item.Name)
+        @Html.EditControlsFor(m => m.Item.Definition)
+        @Html.EditControlsFor(m => m.Item.ValidFrom)
+        @Html.EditControlsFor(m => m.Item.ValidTo)
+    </body>
+

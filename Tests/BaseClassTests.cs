@@ -4,11 +4,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Abc.Tests
 {
-    public abstract class BaseTest<TClass, TBaseClass>
+    public abstract class BaseClassTests<TClass, TBaseClass> : BaseTests
 
     {
         protected TClass obj;
-        protected Type type;
+       
 
         [TestInitialize]
         public virtual void TestInitialize()
@@ -21,6 +21,7 @@ namespace Abc.Tests
         {
             Assert.AreEqual(typeof(TBaseClass), type.BaseType);
         }
+
         protected static void isNullableProperty<T>(Func<T> get, Action<T> set)
         {
             isProperty(get, set);
