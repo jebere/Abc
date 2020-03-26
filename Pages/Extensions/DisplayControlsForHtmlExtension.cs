@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Abc.Pages.Extentions
+namespace Abc.Pages.Extensions
 {
     public static class DisplayControlsForHtmlExtension
     {

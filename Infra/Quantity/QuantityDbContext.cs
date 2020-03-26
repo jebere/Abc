@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Abc.Data.Quantity;
+﻿using Abc.Data.Quantity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Abc.Infra.Quantity
 {
@@ -9,17 +9,15 @@ namespace Abc.Infra.Quantity
         public DbSet<UnitData> Units { get; set; }
         public DbSet<SystemOfUnitsData> SystemsOfUnits { get; set; }
         public DbSet<UnitFactorData> UnitFactors { get; set; }
-
         public QuantityDbContext(DbContextOptions<QuantityDbContext> options)
-            : base(options)
-        {
-        }
+            : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             InitializeTables(builder);
         }
+
         public static void InitializeTables(ModelBuilder builder)
         {
             builder.Entity<MeasureData>().ToTable(nameof(Measures));

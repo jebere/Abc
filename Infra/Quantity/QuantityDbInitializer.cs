@@ -223,7 +223,7 @@ namespace Abc.Infra.Quantity
 
         public static void Initialize(QuantityDbContext db)
         {
-            initializeMeasures(db);
+            InitializeMeasures(db);
             initializeUnits(db);
         }
 
@@ -240,7 +240,7 @@ namespace Abc.Infra.Quantity
             db.SaveChanges();
         }
 
-        private static void initializeMeasures(QuantityDbContext db)
+        private static void InitializeMeasures(QuantityDbContext db)
         {
             if (db.Measures.Count() != 0) return;
             db.Measures.AddRange(measures);

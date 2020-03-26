@@ -1,10 +1,10 @@
 ﻿@page
-@using Abc.Pages.Extentions
+@using Abc.Pages.Extensions
 @model Abc.Soft.Areas.Quantity.Pages.Measures.IndexModel
 
 @{
     Layout = "_Index";
-    var page = "/Quantity/Measures";
+    var page = Model.PageUrl;
 }
 @section Create
 {

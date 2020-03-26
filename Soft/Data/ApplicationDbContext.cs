@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Soft.Data
+namespace Abc.Soft.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

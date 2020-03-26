@@ -3,7 +3,7 @@ using Abc.Domain.Quantity;
 using Abc.Pages.Quantity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Soft.Areas.Quantity.Pages.Measures
+namespace Abc.Soft.Areas.Quantity.Pages.Measures
 {
     public class EditModel : MeasuresPage
     {
@@ -11,16 +11,16 @@ namespace Soft.Areas.Quantity.Pages.Measures
         {
         }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
-            await getObject(id);
+            await GetObject(id, fixedFilter, fixedValue);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string fixedFilter, string fixedValue)
         {
-            await updateObject();
-            return RedirectToPage("./Index");
+            await updateObject(fixedFilter, fixedValue);
+            return Redirect(IndexUrl);
         }
     }
 }

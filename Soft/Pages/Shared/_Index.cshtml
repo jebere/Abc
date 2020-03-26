@@ -11,6 +11,8 @@
 </p>
 
 <form asp-page="./Index" method="get">
+    <input type="hidden" name="FixedFilter" value="@Model.FixedFilter" />
+    <input type="hidden" name="FixedValue" value="@Model.FixedValue" />
     <div class="form-inline">
         <p>
             Find by:
@@ -19,7 +21,11 @@
             &nbsp;
             <input type="submit" value="Search" class="btn btn-primary" />
             &nbsp;
-            <a asp-page="./Index">Back to full List</a>
+            <a asp-page="./Index"
+               asp-route-fixedFilter="@Model.FixedFilter"
+               asp-route-fixedValue="@Model.FixedValue">
+                Back to full List
+            </a>
         </p>
     </div>
 </form>
@@ -39,6 +45,8 @@
        asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="1"
        asp-route-currentFilter="@Model.SearchString"
+       asp-route-fixedFilter="@Model.FixedFilter"
+       asp-route-fixedValue="@Model.FixedValue"
        class="btn btn-light @prevDisabled">
         First
     </a>
@@ -47,6 +55,8 @@
        asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="@(Model.PageIndex - 1)"
        asp-route-currentFilter="@Model.SearchString"
+       asp-route-fixedFilter="@Model.FixedFilter"
+       asp-route-fixedValue="@Model.FixedValue"
        class="btn btn-light @prevDisabled">
         Previous
     </a>
@@ -57,6 +67,8 @@
        asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="@(Model.PageIndex + 1)"
        asp-route-currentFilter="@Model.SearchString"
+       asp-route-fixedFilter="@Model.FixedFilter"
+       asp-route-fixedValue="@Model.FixedValue"
        class="btn btn-light @nextDisabled">
         Next
     </a>
@@ -65,6 +77,8 @@
        asp-route-sortOrder="@Model.SortOrder"
        asp-route-pageIndex="@(Model.TotalPages)"
        asp-route-currentFilter="@Model.SearchString"
+       asp-route-fixedFilter="@Model.FixedFilter"
+       asp-route-fixedValue="@Model.FixedValue"
        class="btn btn-light @nextDisabled">
         Last
     </a>

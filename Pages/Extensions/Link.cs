@@ -1,4 +1,4 @@
-﻿namespace Abc.Pages.Extentions
+﻿namespace Abc.Pages.Extensions
 {
     public class Link
     {

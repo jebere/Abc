@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Abc.Pages.Extensions
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,12 +20,28 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                        @Html.DropDownNavigationMenuFor("File",
+                            new Link("Marketing", "/Processes/Marketing"),
+                            new Link("CRM", "/Processes/CRM"),
+                            new Link("Recruiting", "/Processes/Recruiting"),
+                            new Link("Catalogs", "/Inventory/Catalogs"),
+                            new Link("Sales", "/Orders/Sales"),
+                            new Link("Purchases", "/Orders/Purchases"),
+                            new Link("Persons", "/Party/Persons"),
+                            new Link("Organizations", "/Party/Organizations"))
+
+                        @Html.DropDownNavigationMenuFor("Data",
+                            new Link("Measures", "/Quantity/Measures"),
+                            new Link("Units", "/Quantity/Units"),
+                            new Link("Currencies", "/Money/Currencies"),
+                            new Link("Countries", "/Party/Countries"),
+                            new Link("Roles", "/Party/Roles"),
+                            new Link("Products", "/Inventory/Products"),
+                            new Link("Calculator", "/Quantity/Calculator"))
+
+                        @Html.DropDownNavigationMenuFor("Help",
+                            new Link("About", "/Index"),
+                            new Link("Privacy", "/Privacy"))
                     </ul>
                 </div>
             </div>
@@ -45,6 +62,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="_framework/blazor.server.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

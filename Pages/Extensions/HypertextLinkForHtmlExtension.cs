@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Abc.Pages.Extentions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Abc.Pages.Extentions {
+namespace Abc.Pages.Extensions {
 
     public static class HypertextLinkForHtmlExtension {
 

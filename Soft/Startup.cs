@@ -1,15 +1,15 @@
 using Abc.Domain.Quantity;
 using Abc.Infra.Quantity;
+using Abc.Soft.Data;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Soft.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Soft
+namespace Abc.Soft
 {
     public class Startup
     {
@@ -34,6 +34,7 @@ namespace Soft
             services.AddScoped<IMeasuresRepository, MeasuresRepository>();
             services.AddScoped<IUnitsRepository, UnitsRepository>();
             services.AddRazorPages();
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +63,7 @@ namespace Soft
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
         }
     }

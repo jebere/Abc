@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Abc.Pages.Extentions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Abc.Pages.Extentions {
+namespace Abc.Pages.Extensions {
     public static class DropDownNavigationMenuForHtmlExtension {
         internal static void addDropDownMenuItem(List<object> htmlStrings, Link item) {
             if (htmlStrings is null) return;
