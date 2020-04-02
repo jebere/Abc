@@ -9,10 +9,9 @@ namespace Abc.Infra
         where TData : UniqueEntityData, new()
         where TDomain : Entity<TData>, new()
     {
-        protected UniqueEntityRepository(DbContext c, DbSet<TData> s) : base(c, s)
-        {
-        }
+        protected UniqueEntityRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
         protected override async Task<TData> getData(string id)
             => await dbSet.FirstOrDefaultAsync(m => m.Id == id);
+        protected override string getId(TDomain entity) => entity?.Data?.Id;
     }
 }

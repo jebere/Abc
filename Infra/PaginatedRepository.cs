@@ -30,7 +30,7 @@ namespace Abc.Infra
         internal int getItemsCount() => base.createSqlQuery().CountAsync().Result;
 
         protected internal override IQueryable<TData> createSqlQuery() => addSkipAndTake(base.createSqlQuery());
-        private IQueryable<TData> addSkipAndTake(IQueryable<TData> query)
+        internal IQueryable<TData> addSkipAndTake(IQueryable<TData> query)
         {
             if (PageIndex < 1) return query;
             return query
