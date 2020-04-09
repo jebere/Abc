@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Abc.Domain.Quantity;
 using Abc.Facade.Common;
 
 namespace Abc.Facade.Quantity
@@ -14,6 +15,9 @@ namespace Abc.Facade.Quantity
         public string SystemOfUnitsId { get; set; }
         public double Factor { get; set; }
 
-
+        public string GetId()
+        {
+            return $"{SystemOfUnitsId}.{UnitId}";
+        }
     }
 }

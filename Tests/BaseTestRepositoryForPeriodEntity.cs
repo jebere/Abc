@@ -5,9 +5,9 @@ using Abc.Domain.Common;
 
 namespace Abc.Tests
 {
-    internal class BaseTestRepository<TObj, TData>
+    internal abstract class BaseTestRepositoryForPeriodEntity<TObj, TData>
         where TObj : Entity<TData>
-        where TData : UniqueEntityData, new()
+        where TData : PeriodData, new()
     {
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
@@ -19,11 +19,8 @@ namespace Abc.Tests
         public string FixedFilter { get; set; }
         public string FixedValue { get; set; }
 
-        private readonly List<TObj> list;
-        public BaseTestRepository()
-        {
-            list = new List<TObj>();
-        }
+        internal readonly List<TObj> list;
+        public BaseTestRepositoryForPeriodEntity() => list = new List<TObj>();
 
         public async Task<List<TObj>> Get()
         {
@@ -34,13 +31,15 @@ namespace Abc.Tests
         public async Task<TObj> Get(string id)
         {
             await Task.CompletedTask;
-            return list.Find(x => x.Data.Id == id);
+            return list.Find(x => isThis(x, id));
         }
+
+        protected abstract bool isThis(TObj entity, string id);
 
         public async Task Delete(string id)
         {
             await Task.CompletedTask;
-            var obj = list.Find(x => x.Data.Id == id);
+            var obj = list.Find(x => isThis(x, id));
             list.Remove(obj);
         }
 
@@ -52,8 +51,9 @@ namespace Abc.Tests
 
         public async Task Update(TObj obj)
         {
-            await Delete(obj.Data.Id);
+            await Delete(getId(obj));
             list.Add(obj);
         }
+        protected abstract string getId(TObj entity);
     }
 }

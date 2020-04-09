@@ -1,4 +1,5 @@
 ﻿using System;
+using Abc.Aids;
 using Abc.Data.Quantity;
 using Abc.Domain.Quantity;
 using Abc.Infra;
@@ -14,16 +15,16 @@ namespace Abc.Tests.Infra.Quantity
         [TestInitialize]
         public override void TestInitialize()
         {
-            base.TestInitialize();
             var options = new DbContextOptionsBuilder<QuantityDbContext>()
                 .UseInMemoryDatabase("TestDb")
                 .Options;
-            var c = new QuantityDbContext(options);
-            obj = new MeasuresRepository(c);
+            db = new QuantityDbContext(options);
+            dbSet = ((QuantityDbContext)db).Measures;
+            obj = new MeasuresRepository((QuantityDbContext)db);
+            base.TestInitialize();
         }
-        protected override Type getBaseType() => typeof(UniqueEntityRepository<Measure, MeasureData>);
 
-        protected override void testGetList() => Assert.Inconclusive();
+        protected override Type getBaseType() => typeof(UniqueEntityRepository<Measure, MeasureData>);
 
         protected override string getId(MeasureData d) => d.Id;
 

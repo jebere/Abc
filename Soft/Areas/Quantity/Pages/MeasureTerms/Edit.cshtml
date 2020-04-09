@@ -1,0 +1,16 @@
+﻿@page
+@using Abc.Pages.Extensions
+@model Abc.Soft.Areas.Quantity.Pages.MeasureTerms.EditModel
+
+@{
+    Layout = "_Edit";
+}
+    <body>
+    <input type="hidden" asp-for="Item.MasterId" />
+    <input type="hidden" asp-for="Item.TermId" />
+    @Html.DisabledControlsFor(model => model.Item.MasterId)
+    @Html.DisabledControlsFor(model => model.Item.TermId)
+        @Html.EditControlsFor(model => model.Item.Power)
+        @Html.EditControlsFor(model => model.Item.ValidFrom)
+        @Html.EditControlsFor(model => model.Item.ValidTo)
+    </body>

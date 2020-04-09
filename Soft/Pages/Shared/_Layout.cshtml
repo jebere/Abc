@@ -32,7 +32,11 @@
 
                         @Html.DropDownNavigationMenuFor("Data",
                             new Link("Measures", "/Quantity/Measures"),
+                            new Link("Measure Terms", "/Quantity/MeasureTerms"),
+                            new Link("Systems Of Units", "/Quantity/SystemsOfUnits"),
                             new Link("Units", "/Quantity/Units"),
+                            new Link("Unit Terms", "/Quantity/UnitTerms"),
+                            new Link("Unit Factors", "/Quantity/UnitFactors"),
                             new Link("Currencies", "/Money/Currencies"),
                             new Link("Countries", "/Party/Countries"),
                             new Link("Roles", "/Party/Roles"),
@@ -63,6 +67,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="_framework/blazor.server.js"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>

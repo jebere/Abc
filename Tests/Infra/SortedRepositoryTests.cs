@@ -23,7 +23,7 @@ namespace Abc.Tests.Infra
         {
             public testClass(DbContext c, DbSet<MeasureData> s) : base(c, s) {}
 
-            protected internal override Measure toDomainObjects(MeasureData d) => new Measure(d);
+            protected internal override Measure toDomainObject(MeasureData d) => new Measure(d);
             
 
             protected override async Task<MeasureData> getData(string id)

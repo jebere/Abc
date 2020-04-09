@@ -118,5 +118,8 @@ namespace Abc.Tests.Pages.Extensions
 
         [TestMethod]
         public void CalculatorPageTitleTest() => Assert.AreEqual("Calculator", Constants.CalculatorPageTitle);
+
+        [TestMethod]
+        public void SelectLinkTitleTest() => Assert.AreEqual("Select", Constants.SelectLinkTitle);
     }
 }

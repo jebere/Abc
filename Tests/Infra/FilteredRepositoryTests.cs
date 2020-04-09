@@ -20,7 +20,7 @@ namespace Abc.Tests.Infra
 
             public testClass(DbContext c, DbSet<MeasureData> s) : base(c, s) { }
 
-            protected internal override Measure toDomainObjects(MeasureData d) => new Measure(d);
+            protected internal override Measure toDomainObject(MeasureData d) => new Measure(d);
 
             protected override async Task<MeasureData> getData(string id)
             {
@@ -90,7 +90,7 @@ namespace Abc.Tests.Infra
             var expected = p.Name;
             if (p.PropertyType != typeof(string))
                 expected += ".ToString()";
-            expected += $".Contains(\"{fixedValue}\")";
+            expected += $" == \"{fixedValue}\"";
             Assert.IsTrue(s.Contains(expected));
         }
 

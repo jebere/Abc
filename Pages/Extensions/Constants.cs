@@ -1,5 +1,4 @@
-﻿
-namespace Abc.Pages.Extensions
+﻿namespace Abc.Pages.Extensions
 {
     public static class Constants
     {
@@ -9,6 +8,7 @@ namespace Abc.Pages.Extensions
         public const string EditLinkTitle = "Edit";
         public const string DetailsLinkTitle = "Details";
         public const string DeleteLinkTitle = "Delete";
+        //public const string SelectLinkTitle = "Select";
 
         public const string BusinessMenuTitle = "Business";
         public const string PartiesMenuTitle = "Parties";
@@ -42,7 +42,7 @@ namespace Abc.Pages.Extensions
         public const string RatesPageTitle = "Day Rates";
         public const string PaymentMethodsPageTitle = "Payment Methods";
         public const string CalculatorPageTitle = "Calculator";
+        public const string SelectLinkTitle = "Select";
     }
-
 }
 

@@ -7,19 +7,12 @@ namespace Abc.Soft.Areas.Quantity.Pages.Units
 {
     public class DetailsModel : UnitsPage
     {
-        public DetailsModel(IUnitsRepository r, IMeasuresRepository m) : base(r, m)
-        {
-        }
-
+        public DetailsModel(IUnitsRepository r, IMeasuresRepository m, IUnitTermsRepository t, IUnitFactorsRepository f) : base(r, m, t, f) { }
         public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
-            FixedFilter = fixedFilter;
-            FixedValue = fixedValue;
             await GetObject(id, fixedFilter, fixedValue);
             return Page();
         }
-
     }
-
 }
 

@@ -7,7 +7,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
 {
     public class CreateModel : MeasuresPage
     {
-        public CreateModel(IMeasuresRepository r) : base(r) { }
+        public CreateModel(IMeasuresRepository r, IMeasureTermsRepository t) : base(r, t) { }
 
         public IActionResult OnGet(string fixedFilter, string fixedValue)
         {
@@ -18,7 +18,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
         public async Task<IActionResult> OnPostAsync(string fixedFilter, string fixedValue)
         {
             if (!await addObject(fixedFilter, fixedValue)) return Page();
-            return Redirect($"/Quantity/Measures/Index?fixedFilter={FixedFilter}&fixedValue={FixedValue}");
+            return Redirect(IndexUrl);
         }
     }
 }

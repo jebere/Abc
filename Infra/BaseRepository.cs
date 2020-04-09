@@ -19,27 +19,34 @@ namespace Abc.Infra
             db = c;
             dbSet = s;
         }
+
         public virtual async Task<List<TDomain>> Get()
         {
             var query = createSqlQuery();
-            var set = await runSqlQueryAsync(query);
-            return toDomainObjectsList(set);
+            var set = await RunSqlQueryAsync(query);
+            return ToDomainObjectsList(set);
         }
-        internal List<TDomain> toDomainObjectsList(List<TData> set) => set.Select(toDomainObjects).ToList();
-        protected internal abstract TDomain toDomainObjects(TData periodData);
-        internal async Task<List<TData>> runSqlQueryAsync(IQueryable<TData> query) => await query.AsNoTracking().ToListAsync();
+
+        internal List<TDomain> ToDomainObjectsList(List<TData> set)
+            => set.Select(toDomainObject).ToList();
+
+        protected internal abstract TDomain toDomainObject(TData periodData);
+
+        internal async Task<List<TData>> RunSqlQueryAsync(IQueryable<TData> query)
+            => await query.AsNoTracking().ToListAsync();
+
+
         protected internal virtual IQueryable<TData> createSqlQuery()
         {
-            var query = from s in dbSet select s;
+            var query = from s in dbSet select s; //sql paring
             return query;
         }
 
         public async Task<TDomain> Get(string id)
         {
             if (id is null) return new TDomain();
-
             var d = await getData(id);
-            var obj = new TDomain { Data = d };
+            var obj = toDomainObject(d);
             return obj;
         }
 
@@ -49,7 +56,7 @@ namespace Abc.Infra
         {
             if (id is null) return;
 
-            var v = await dbSet.FindAsync(id);
+            var v = await getData(id);
 
             if (v is null) return;
             dbSet.Remove(v);
@@ -67,7 +74,7 @@ namespace Abc.Infra
         {
             if (obj is null) return;
 
-            var v = await dbSet.FindAsync(getId(obj));
+            var v = await getData(getId(obj));
 
             if (v is null) return;
             dbSet.Remove(v);

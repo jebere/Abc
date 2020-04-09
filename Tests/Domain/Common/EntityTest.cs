@@ -8,16 +8,16 @@ namespace Abc.Tests.Domain.Common
     [TestClass]
     public class EntityTests : AbstractClassTests<Entity<MeasureData>, object>
     {
-        private class testClass : Entity<MeasureData>
+        private class TestClass : Entity<MeasureData>
         {
-            public testClass(MeasureData d = null) : base(d) { }
+            public TestClass(MeasureData d = null) : base(d) { }
         }
 
         [TestInitialize]
         public override void TestInitialize()
         {
             base.TestInitialize();
-            obj = new testClass();
+            obj = new TestClass();
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@ namespace Abc.Tests.Domain.Common
         {
             var d = GetRandom.Object<MeasureData>();
             Assert.AreNotSame(d, obj.Data);
-            obj = new testClass(d);
+            obj = new TestClass(d);
             Assert.AreSame(d, obj.Data);
         }
 
@@ -33,7 +33,7 @@ namespace Abc.Tests.Domain.Common
         public void DataIsNullTest()
         {
             var d = GetRandom.Object<MeasureData>();
-            Assert.IsNotNull(obj.Data);
+            Assert.IsNull(obj.Data);
             obj.Data = d;
             Assert.AreSame(d, obj.Data);
         }
@@ -41,7 +41,6 @@ namespace Abc.Tests.Domain.Common
         [TestMethod]
         public void CanSetNullDataTest()
         {
-            Assert.IsNotNull(obj.Data);
             obj.Data = null;
             Assert.IsNull(obj.Data);
         }
